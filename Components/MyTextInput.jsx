@@ -7,7 +7,7 @@ const MyTextInput = ({label, mt, ...props}) => {
     return (
         <FormControl mt={mt}>
             <Text color="white" mb="1" pl="5">{label}</Text>
-            <Input {...props} borderRadius="15" bg="primary.200" mx="4"/>
+            <Input {...props} borderRadius="15" bg="primary.200" mx="4" borderColor= "primary.200"/>
         </FormControl>
     );
 };

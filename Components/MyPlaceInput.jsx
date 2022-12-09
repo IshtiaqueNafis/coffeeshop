@@ -28,15 +28,36 @@ const MyPlaceInput = ({mt, label, ...props}) => {
                     keyboardShouldPersistTaps={"always"}
                     listViewDisplayed={true}
                     styles={{
-                        container: {
-                        },
                         textInputContainer: {
-                            marginHorizontal: 10
+                            marginHorizontal: 10,
+                            borderRadius: 15,
+                            width: 250,
                         },
                         textInput: {
                             backgroundColor: '#D1C0AD',
                             borderRadius: 15,
                             marginHorizontal: 4,
+                            width: 250,
+                        },
+                        row: {
+                            backgroundColor: '#D1C0AD',
+                            marginHorizontal: 4,
+                            marginLeft: 10,
+                            width: 250,
+                            height: 50,
+                            color: 'black',
+                          },
+                          poweredContainer: {
+                            backgroundColor: '#D1C0AD',
+                            marginHorizontal: 4,
+                            marginLeft: 10,
+                            width: 250,
+                            height: 40,
+                            color: 'black',
+                        },
+                        separator: {
+                            backgroundColor: 'transparent',
+                            width: 250,
                         },
                     }}
                     query={{
@@ -53,10 +74,7 @@ const MyPlaceInput = ({mt, label, ...props}) => {
                         console.log({location})
                         helpers.setValue(location.address);
 
-                    }}
-
-
-                    placeholder={'enter a place'}/>
+                    }}/>
 
             </ScrollView>
 

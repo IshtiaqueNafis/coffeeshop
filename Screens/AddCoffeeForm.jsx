@@ -80,7 +80,7 @@ const AddCoffeeForm = ({navigation}) => {
                         </Box>
                         <Box p="2" my="5" maxW="290" borderRightRadius="30" bg="primary.100">
                             <VStack>
-                                <MyTextInput label={"enter name"}
+                                <MyTextInput label={"Enter Name"}
                                              mt={"5"}
 
                                              onChangeText={handleChange("coffeeShopName")}
@@ -88,7 +88,7 @@ const AddCoffeeForm = ({navigation}) => {
                                              value={values.coffeeShopName}
                                 />
 
-                                <MyPlaceInput label={"address"}
+                                <MyPlaceInput label={"Address"}
                                               mt={"3"}
                                               name={"address"}
                                               onChangeText={handleChange('address')}

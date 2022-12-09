@@ -27,7 +27,18 @@ const MyPlaceInput = ({mt, label, ...props}) => {
                     keepResultsAfterBlur={true}
                     keyboardShouldPersistTaps={"always"}
                     listViewDisplayed={true}
-
+                    styles={{
+                        container: {
+                        },
+                        textInputContainer: {
+                            marginHorizontal: 10
+                        },
+                        textInput: {
+                            backgroundColor: '#D1C0AD',
+                            borderRadius: 15,
+                            marginHorizontal: 4,
+                        },
+                    }}
                     query={{
                         key: 'AIzaSyDmKJYeqgs3F42zaQtHVC8jgivkn3URjVw',
                         language: 'en',

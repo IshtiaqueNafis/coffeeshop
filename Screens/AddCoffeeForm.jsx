@@ -124,24 +124,7 @@ const AddCoffeeForm = ({navigation}) => {
                                     />
 
                                 </View>
-                                <HStack>
-                                    <FormControl mt="3">
-                                        <Text color="white" mb="1" pl="5">
-                                            Tags
-                                        </Text>
-                                        <Button bg="primary.50" mx="4" w="100" h="10">
-                                            Add Tags +
-                                        </Button>
-                                    </FormControl>
-                                </HStack>
-                                <FormControl mt="3">
-                                    <Text color="white" mb="1" pl="5">
-                                        Import Images
-                                    </Text>
-                                    <Button borderRadius="15" bg="primary.200" mx="4" h="45">
-                                        Upload
-                                    </Button>
-                                </FormControl>
+
                                 <Box alignItems="center" mt="5">
                                     <Button my="3" bg="primary.50"
                                             w="100" onPress={handleSubmit}>

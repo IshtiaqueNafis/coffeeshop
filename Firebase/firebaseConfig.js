@@ -1,5 +1,5 @@
 import {initializeApp} from 'firebase/app';
-import {collection, getDocs, getFirestore} from "firebase/firestore";
+import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore} from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -29,5 +29,25 @@ export const getCoffeeShopData = async () => {
         console.log(e.message);
     }
 
+}
+export const getSingleCoffeeShopData = async (id) => {
+    const snap = await getDoc(doc(db, "coffeeShop", id));
+    return {id: snap.id, ...snap.data()}
+}
+
+export const deleteBasedOnId = async (id) => {
+    const docRef = doc(db, "coffeeShop", id);
+    await deleteDoc(docRef)
+
+}
+
+export const addCoffeeShopData = async (data) => {
+    try {
+        await addDoc(collection(db, "coffeeShop"), {
+            ...data
+        });
+    } catch (e) {
+        console.log(e.message);
+    }
 }
 //endregion

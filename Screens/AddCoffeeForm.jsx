@@ -117,10 +117,39 @@ const AddCoffeeForm = ({navigation}) => {
                                 <View style={{flex: 1, paddingHorizontal: 20, paddingTop: 20}}>
                                     <MultipleSelectList
                                         setSelected={val => setSelected(val)}
+                                        placeholder={"Tags"}
                                         data={coffeShopTags}
-                                        label={"tags"}
+                                        searchPlaceholder={"Search"}
+                                        label={"Tags"}
                                         save={"value"}
-
+                                        boxStyles={{
+                                            backgroundColor: "#D1C0AD",
+                                            borderColor: "#D1C0AD",
+                                            color: "white",
+                                        }}
+                                        inputStyles={{
+                                            color: "white",
+                                        }}
+                                        dropdownStyles={{
+                                            backgroundColor: "#D1C0AD",
+                                        }}
+                                        dropdownTextStyles={{
+                                            color: "white",
+                                        }}
+                                        dropdownItemStyles={{
+                                            backgroundColor: "#D1C0AD",
+                                        }}
+                                        badgeStyles={{
+                                            backgroundColor: "#5C3724",
+                                        }}
+                                        checkBoxStyles={{
+                                            borderColor: "white",
+                                            color: "white",
+                                        }}
+                                        labelStyles={{
+                                            color: "white",
+                                            fontWeight: "Thin"
+                                        }}
                                     />
 
                                 </View>

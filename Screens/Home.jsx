@@ -102,22 +102,17 @@ const Home = ({ navigation }) => {
                   borderRadius="10"
                 />
                 <VStack alignSelf="center">
-                  <Text fontSize="3xl" maxW="180" ml="3" color="primary.50">
+                  <Text fontSize="2xl" maxW="150" ml="3" color="primary.50">
                     {item.coffeeShopName}
                   </Text>
-                  <Rating
-                    type="custom"
-                    fractions={0} //Editable rating
+                  <AirbnbRating
+                    defaultRating={item.coffeeRating}
+                    isDisabled={true}
+                    showRating={false}
                     ratingCount={5}
-                    imageSize={25}
-                    ratingColor="#ec9c60"
-                    ratingBackgroundColor="transparent"
-                    style={{
-                      backgroundColor: "transparent",
-                      alignItems: "flex-start",
-                      marginLeft: 10,
-                      marginBottom: 15,
-                    }}
+                    size={25}
+                    selectedColor="#ec9c60"
+                    starContainerStyle={{ marginLeft: 10, marginTop: 10 }}
                   />
                 </VStack>
               </HStack>

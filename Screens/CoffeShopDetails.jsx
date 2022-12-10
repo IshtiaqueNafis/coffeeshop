@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Loading from "./Loading";
 import {collection, onSnapshot} from "firebase/firestore";
 import {Linking} from "react-native";
-import {Rating} from "react-native-ratings";
+import {AirbnbRating} from "react-native-ratings";
 import MyMapMarker from "../Components/MyMapMarker";
 
 const CoffeeShopDetails = ({route, navigation}) => {
@@ -48,15 +48,14 @@ const CoffeeShopDetails = ({route, navigation}) => {
                     </Heading>
                 </Box>
                 <HStack mt="5">
-                    <Rating
+                    <AirbnbRating
                         defaultRating={coffeeShop?.coffeeRating}
-                        type="custom"
-                        fractions={0} //Editable rating
+                        showRating={false}
                         ratingCount={5}
-                        imageSize={25}
-                        ratingColor="#ec9c60"
+                        size={25}
+                        selectedColor="#ec9c60"
                         onFinishRating={async value => await addRatingCoffeeShop(value, id)}
-                        style={{
+                        starContainerStyle={{
                             marginLeft: 30,
                         }}
                     />
@@ -130,8 +129,8 @@ const CoffeeShopDetails = ({route, navigation}) => {
                         </HStack>
                     </VStack>
                     <Box flex="1" alignItems="flex-end" mr="8">
-                       {/*<MyMapMarker*/}
-                       {/*    lat={coffeeShop?.address?.lat} lng={coffeeShop?.address?.lng}/>*/}
+                       <MyMapMarker
+                           lat={coffeeShop?.address?.lat} lng={coffeeShop?.address?.lng}/>
                     </Box>
                 </HStack>
                 <Box mt="3" mx="8">

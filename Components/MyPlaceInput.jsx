@@ -46,8 +46,8 @@ const MyPlaceInput = ({mt, label, ...props}) => {
                             width: 250,
                             height: 50,
                             color: 'black',
-                          },
-                          poweredContainer: {
+                        },
+                        poweredContainer: {
                             backgroundColor: '#D1C0AD',
                             marginHorizontal: 4,
                             marginLeft: 10,
@@ -69,10 +69,12 @@ const MyPlaceInput = ({mt, label, ...props}) => {
                     onPress={(data, details = null) => {
 
                         const location = {
-                            address: details.formatted_address,
+                            fullAddress: details.formatted_address,
+                            lat: details.geometry.location.lat,
+                            lng: details.geometry.location.lng
                         }
-                        console.log({location})
-                        helpers.setValue(location.address);
+
+                        helpers.setValue(location);
 
                     }}/>
 

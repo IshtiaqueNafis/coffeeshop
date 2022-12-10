@@ -1,12 +1,14 @@
 import React, {useEffect} from 'react';
 import {Box, Button, Heading, HStack, Icon, Image, Pressable, ScrollView, Text, VStack} from "native-base";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
-import {db} from "../Firebase/firebaseConfig";
+import {addRatingCoffeeShop, db} from "../Firebase/firebaseConfig";
 import {coffeeSelector, deleteCoffeeShopAsync, getSingleCoffeeShopDataAsync} from "../Redux/CoffeShopSliceReducer";
 import {useDispatch, useSelector} from "react-redux";
 import Loading from "./Loading";
 import {collection, onSnapshot} from "firebase/firestore";
 import {Linking} from "react-native";
+import {Rating} from "react-native-ratings";
+import MyMapMarker from "../Components/MyMapMarker";
 
 const CoffeeShopDetails = ({route, navigation}) => {
     const {id} = route.params;
@@ -46,16 +48,18 @@ const CoffeeShopDetails = ({route, navigation}) => {
                     </Heading>
                 </Box>
                 <HStack mt="5">
-                    {/*<Rating*/}
-                    {/*    type="custom"*/}
-                    {/*    fractions={0} //Editable rating*/}
-                    {/*    ratingCount={5}*/}
-                    {/*    imageSize={25}*/}
-                    {/*    ratingColor="#ec9c60"*/}
-                    {/*    style={{*/}
-                    {/*        marginLeft: 30,*/}
-                    {/*    }}*/}
-                    {/*/>*/}
+                    <Rating
+                        defaultRating={coffeeShop?.coffeeRating}
+                        type="custom"
+                        fractions={0} //Editable rating
+                        ratingCount={5}
+                        imageSize={25}
+                        ratingColor="#ec9c60"
+                        onFinishRating={async value => await addRatingCoffeeShop(value, id)}
+                        style={{
+                            marginLeft: 30,
+                        }}
+                    />
                     <Box flex="1" alignItems="flex-end" mr="8">
                         <HStack>
                             <Pressable
@@ -101,7 +105,7 @@ const CoffeeShopDetails = ({route, navigation}) => {
                             />
                             <Box w="200" maxW="145" maxH="300">
                                 <Text fontSize="md" ml="3">
-                                    {coffeeShop?.address}
+                                    {coffeeShop?.address.fullAddress}
                                 </Text>
                             </Box>
                         </HStack>
@@ -126,15 +130,8 @@ const CoffeeShopDetails = ({route, navigation}) => {
                         </HStack>
                     </VStack>
                     <Box flex="1" alignItems="flex-end" mr="8">
-                        {/*<Image*/}
-                        {/*    mt="3"*/}
-                        {/*    source={require("./assets/Google.png")}*/}
-                        {/*    alt="Alternate Text"*/}
-                        {/*    maxW="120px"*/}
-                        {/*    maxH="120px"*/}
-                        {/*    h="120px"*/}
-                        {/*    w="120px"*/}
-                        {/*/>*/}
+                       {/*<MyMapMarker*/}
+                       {/*    lat={coffeeShop?.address?.lat} lng={coffeeShop?.address?.lng}/>*/}
                     </Box>
                 </HStack>
                 <Box mt="3" mx="8">

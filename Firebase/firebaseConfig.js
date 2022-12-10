@@ -1,5 +1,5 @@
 import {initializeApp} from 'firebase/app';
-import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore} from "firebase/firestore";
+import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, setDoc} from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -50,4 +50,13 @@ export const addCoffeeShopData = async (data) => {
         console.log(e.message);
     }
 }
+
+export const addRatingCoffeeShop = async (rating, id) => {
+    const docRef = await doc(db, "coffeeShop", id);
+    const data = {
+        coffeeRating: rating
+    }
+    await setDoc(docRef, data, {merge: true});
+}
+
 //endregion

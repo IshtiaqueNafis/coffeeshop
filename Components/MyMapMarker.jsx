@@ -14,6 +14,7 @@ const MyMapMarker = ({lat, lng}) => {
     return (
         <View>
             <MapView
+                style={{marginTop: 10, width: 150, height: 125}}
                 region={mapRegion}>
                 <Marker coordinate={mapRegion} title='Marker'/>
 

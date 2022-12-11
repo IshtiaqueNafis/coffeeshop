@@ -43,7 +43,7 @@ const Home = ({ navigation }) => {
       <Pressable
         alignSelf="flex-end"
         mr="5"
-        onPress={() => navigation.navigate("About")}
+        onPress={() => navigation.navigate("About Us")}
       >
         <HStack>
           <Text color="primary.50" mr="1">

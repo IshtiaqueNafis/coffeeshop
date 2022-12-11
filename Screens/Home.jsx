@@ -69,7 +69,7 @@ const Home = ({ navigation }) => {
           Add search bar in the box
         </Heading>
       </Box>
-      <Pressable onPress={() => navigation.navigate("Add a Coffee Shop")}>
+      <Pressable onPress={() => navigation.navigate("Add Coffee Shop")}>
         <HStack>
           <Icon
             as={Ionicons}

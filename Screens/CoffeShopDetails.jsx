@@ -70,11 +70,11 @@ const CoffeeShopDetails = ({route, navigation}) => {
         <ScrollView safeArea>
             <Box maxH="200px">
                 <Image
-                    source={require("../assets/test_img.jpeg")}
+                    source={require("../assets/latte_img.jpg")}
                     alt="Alternate Text"
                 />
             </Box>
-            <Box borderTopRadius="15" bg="white">
+            <Box borderTopRadius="15" bg="white" paddingBottom="300px">
                 <Box mt="5" alignItems="center">
                     <Heading maxW="200" maxH="200" fontWeight="medium">
                         {coffeeShop?.coffeeShopName}

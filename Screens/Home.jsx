@@ -66,9 +66,6 @@ const Home = ({ navigation }) => {
         alignSelf="center"
       />
       <Box my="3">
-        <Heading color="primary.50" textAlign="center">
-          Add search bar in the box
-        </Heading>
       </Box>
       <Pressable onPress={() => navigation.navigate("Add Coffee Shop")}>
         <HStack>
@@ -96,7 +93,7 @@ const Home = ({ navigation }) => {
                 <Image
                   my="3"
                   ml="3"
-                  source={require("../assets/test_img.jpeg")}
+                  source={require("../assets/shop_logo.png")}
                   alt="Alternate Text"
                   maxW="120px"
                   maxH="120px"

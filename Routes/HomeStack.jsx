@@ -4,6 +4,10 @@ import Details from "../Screens/Details";
 import CoffeeShopDetails from "../Screens/CoffeShopDetails";
 import SplashScreen from "../Components/SplashScreen";
 import EditCoffeeShopForm from "../Screens/EditCoffeShopForm";
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();
 
 const Stack = createStackNavigator();
 

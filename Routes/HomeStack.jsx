@@ -12,7 +12,8 @@ const HomeStack = () => (
         <Stack.Screen name={"Splash"} component={SplashScreen}></Stack.Screen>
         <Stack.Screen options={{headerShown: false}} name={'Home'} component={Home}/>
         <Stack.Screen options={{headerShown: false}} name={'Edit'} component={EditCoffeeShopForm}/>
-        <Stack.Screen name={'Details'} options={{headerShown: false}}  component={CoffeeShopDetails}/>
+        <Stack.Screen name={'Details'} options={{headerShown: false}} component={CoffeeShopDetails}/>
+
 
     </Stack.Navigator>
 );

@@ -16,6 +16,39 @@ const CoffeeShopDetails = ({route, navigation}) => {
     const {loading} = useSelector(state => state.coffeeShop);
     const dispatch = useDispatch();
 
+    const onTwitterPress = (data) => {
+        let twitterParameters = [];
+        twitterParameters.push('text=' + encodeURI(data));
+        const url =
+            'https://twitter.com/intent/tweet?'
+            + twitterParameters.join('&');
+
+        Linking.openURL(url)
+            .then((data) => {
+                alert('Twitter Opened');
+            })
+            .catch(() => {
+                alert('Something went wrong');
+            });
+    }
+
+
+    const onFaceBookPress = (data) => {
+        let facebookParameters = [];
+        facebookParameters.push('u=' + encodeURI(`https://www.google.com/maps/place/${data}`));
+        const url =
+            'https://www.facebook.com/sharer/sharer.php?'
+            + facebookParameters.join('&');
+        Linking.openURL(url)
+            .then((data) => {
+                alert('Facebook Opened');
+            })
+            .catch(() => {
+                alert('Something went wrong');
+            });
+    }
+
+
     const onEmailPress = async (coffeeShop) => {
 
         const {coffeeShopName, address, phone} = coffeeShop
@@ -61,6 +94,22 @@ const CoffeeShopDetails = ({route, navigation}) => {
                     />
                     <Box flex="1" alignItems="flex-end" mr="8">
                         <HStack>
+                            <Pressable
+                                onPress={() => {
+                                    navigation.navigate("Routes", {id});
+
+                                }}
+                                ml="5"
+                            >
+                                <Icon
+                                    as={MaterialCommunityIcons}
+                                    name="circle-edit-outline"
+                                    size="30px"
+                                    color="primary.50"
+                                />
+                            </Pressable>
+
+
                             <Pressable
                                 onPress={() => {
                                     navigation.navigate("Edit", {id});
@@ -166,7 +215,11 @@ const CoffeeShopDetails = ({route, navigation}) => {
                     <Pressable
                         ml="3"
                         onPress={() => {
-                            console.log("Facebook me");
+                            const value = coffeeShop.address.fullAddress.split(",")[0]
+                            const replaced = value.split(" ").join('+');
+                            onFaceBookPress(replaced);
+
+
                         }}
                     >
                         <Icon
@@ -179,7 +232,11 @@ const CoffeeShopDetails = ({route, navigation}) => {
                     <Pressable
                         ml="3"
                         onPress={() => {
-                            console.log("Facebook me");
+                            const text = `CoffeeShop name is ${coffeeShop.coffeeShopName}
+                            it is located at ${coffeeShop.address.fullAddress} phone number is ${coffeeShop.phoneNumber}
+                            `
+
+                            onTwitterPress(text);
                         }}
                     >
                         <Icon

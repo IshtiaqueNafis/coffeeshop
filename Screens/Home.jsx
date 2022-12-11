@@ -82,6 +82,7 @@ const Home = ({ navigation }) => {
       </Pressable>
       <FlatList
         data={allCoffeeShopData}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Box bg="white" m="5" w="85%" borderRadius="30">
             <Pressable

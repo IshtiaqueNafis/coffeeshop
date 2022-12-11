@@ -9,8 +9,6 @@ A
 Screens/Basic.jsx,f\7\f719b563163209c5c84384934eb7dcda6e23e7a9
 D
 api/coffeShopTags.js,5\f\5fea9d3b2992c13c031b61d5961659b57908b422
-D
-Routes/HomeStack.jsx,1\a\1a4273f8e834a4c09ab69c2b4ce4fe9b32c85d81
 C
 Screens/Loading.jsx,3\2\320083384ef94d575c35902d14d48ec0098c2bcf
 I

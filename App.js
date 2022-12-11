@@ -14,6 +14,8 @@ const App = () => (
     <NativeBaseProvider theme={mainTheme}>
         <Provider store={store}>
             <NavigationContainer>
+
+
                 <DrawerNavigator/>
             </NavigationContainer>
         </Provider>

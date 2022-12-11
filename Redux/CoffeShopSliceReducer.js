@@ -73,7 +73,7 @@ export const coffeeShopSlice = createSlice({
         });
         builder.addCase(getCoffeeShopDataAsync.fulfilled, (state, {payload}) => {
             state.loading = false;
-            coffeeAdapter.setAll(state, payload);
+            coffeeAdapter.addMany(state, payload);
             state.error = null;
         });
         builder.addCase(getCoffeeShopDataAsync.rejected, (state, {payload}) => {

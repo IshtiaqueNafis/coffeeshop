@@ -154,7 +154,7 @@ const CoffeeShopDetails = ({route, navigation}) => {
                             />
                             <Box w="200" maxW="145" maxH="300">
                                 <Text fontSize="md" ml="3">
-                                    {coffeeShop?.address.fullAddress}
+                                    {coffeeShop?.address?.fullAddress}
                                 </Text>
                             </Box>
                         </HStack>

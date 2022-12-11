@@ -94,26 +94,11 @@ const CoffeeShopDetails = ({route, navigation}) => {
                     />
                     <Box flex="1" alignItems="flex-end" mr="8">
                         <HStack>
-                            <Pressable
-                                onPress={() => {
-                                    navigation.navigate("Routes", {id});
-
-                                }}
-                                ml="5"
-                            >
-                                <Icon
-                                    as={MaterialCommunityIcons}
-                                    name="circle-edit-outline"
-                                    size="30px"
-                                    color="primary.50"
-                                />
-                            </Pressable>
 
 
                             <Pressable
                                 onPress={() => {
                                     navigation.navigate("Edit", {id});
-                                    console.log("Edit me");
                                 }}
                                 ml="5"
                             >

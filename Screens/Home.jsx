@@ -30,6 +30,7 @@ const Home = ({ navigation }) => {
   const allCoffeeShopData = useSelector(coffeeSelector.selectAll);
   const { loading } = useSelector((state) => state.coffeeShop);
   const dispatch = useDispatch();
+  const[refresh, setRefresh] = React.useState(0);
   useEffect(() => {
     onSnapshot(collection(db, "coffeeShop"), () => {
       dispatch(getCoffeeShopDataAsync());
@@ -83,6 +84,7 @@ const Home = ({ navigation }) => {
       <FlatList
         data={allCoffeeShopData}
         keyExtractor={(item) => item.id}
+        extraData={refresh}
         renderItem={({ item }) => (
           <Box bg="white" m="5" w="85%" borderRadius="30">
             <Pressable

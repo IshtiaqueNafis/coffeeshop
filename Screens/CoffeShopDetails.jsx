@@ -201,21 +201,9 @@ const CoffeeShopDetails = ({route, navigation}) => {
                 </Box>
                 <HStack mx="8" mt="3">
                     <Pressable
-                        onPress={() => {
-                            console.log("Instagram me");
-                        }}
-                    >
-                        <Icon
-                            as={Feather}
-                            name="instagram"
-                            size="50px"
-                            color="primary.400"
-                        />
-                    </Pressable>
-                    <Pressable
                         ml="3"
                         onPress={() => {
-                            const value = coffeeShop.address.fullAddress.split(",")[0]
+                            const value = coffeeShop?.address?.fullAddress.split(",")[0]
                             const replaced = value.split(" ").join('+');
                             onFaceBookPress(replaced);
 
@@ -232,8 +220,8 @@ const CoffeeShopDetails = ({route, navigation}) => {
                     <Pressable
                         ml="3"
                         onPress={() => {
-                            const text = `CoffeeShop name is ${coffeeShop.coffeeShopName}
-                            it is located at ${coffeeShop.address.fullAddress} phone number is ${coffeeShop.phoneNumber}
+                            const text = `CoffeeShop name is ${coffeeShop?.coffeeShopName}
+                            it is located at ${coffeeShop?.address?.fullAddress} phone number is ${coffeeShop?.phoneNumber}
                             `
 
                             onTwitterPress(text);

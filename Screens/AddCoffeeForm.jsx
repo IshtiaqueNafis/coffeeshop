@@ -50,7 +50,7 @@ const AddCoffeeForm = ({navigation}) => {
                         setSelected([]);
                         navigation.navigate("Home");
                     } else {
-                        Alert.alert("Must choose 1 tag atleast");
+                        Alert.alert("Must choose 1 Tag at least");
                     }
                 }catch (e) {
                     console.log(e);

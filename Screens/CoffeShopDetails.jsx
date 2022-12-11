@@ -63,6 +63,7 @@ const CoffeeShopDetails = ({route, navigation}) => {
                         <HStack>
                             <Pressable
                                 onPress={() => {
+                                    navigation.navigate("Edit", {id});
                                     console.log("Edit me");
                                 }}
                                 ml="5"
@@ -129,8 +130,8 @@ const CoffeeShopDetails = ({route, navigation}) => {
                         </HStack>
                     </VStack>
                     <Box flex="1" alignItems="flex-end" mr="8">
-                       <MyMapMarker
-                           lat={coffeeShop?.address?.lat} lng={coffeeShop?.address?.lng}/>
+                        <MyMapMarker
+                            lat={coffeeShop?.address?.lat} lng={coffeeShop?.address?.lng}/>
                     </Box>
                 </HStack>
                 <Box mt="3" mx="8">

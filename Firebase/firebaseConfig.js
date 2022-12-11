@@ -59,4 +59,9 @@ export const addRatingCoffeeShop = async (rating, id) => {
     await setDoc(docRef, data, {merge: true});
 }
 
+export const updateCoffeeShop = async (data, id) => {
+    const docRef = await doc(db, "coffeeShop", id);
+    await setDoc(docRef, data);
+}
+
 //endregion

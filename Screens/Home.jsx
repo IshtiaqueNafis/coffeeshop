@@ -103,7 +103,7 @@ const Home = ({ navigation }) => {
                       borderRadius="10"
                     />
                     <VStack alignSelf="center">
-                      <Text fontSize="2xl" maxW="150" ml="3" color="primary.50">
+                      <Text fontSize="2xl" maxW="150" ml="3" mt="5" color="primary.50">
                         {item.coffeeShopName}
                       </Text>
                       <AirbnbRating

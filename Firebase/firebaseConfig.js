@@ -1,5 +1,16 @@
 import {initializeApp} from 'firebase/app';
-import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, setDoc} from "firebase/firestore";
+import {
+    addDoc,
+    collection,
+    deleteDoc,
+    doc,
+    getDoc,
+    getDocs,
+    getFirestore,
+    onSnapshot,
+    query,
+    setDoc
+} from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -17,7 +28,7 @@ export const db = getFirestore();
 //region *** getCoffeeShopData() --> get all the coffeShop data from db  ***
 export const getCoffeeShopData = async () => {
     try {
-        const coffeeShopSnapShot = await getDocs(collection(db, "coffeeShop"));
+        const coffeeShopSnapShot = await getDocs(collection(db, "coffeeShop"))
         return coffeeShopSnapShot.docs.map(
             (doc) => (
                 {

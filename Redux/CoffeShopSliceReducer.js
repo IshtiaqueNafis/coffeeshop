@@ -14,7 +14,17 @@ export const getCoffeeShopDataAsync = createAsyncThunk(
     async (_, thunkApi) => {
 
         try {
-            return await getCoffeeShopData();
+
+            const {coffeeShop} = thunkApi.getState();
+
+            const cofeeShopdata = await getCoffeeShopData();
+
+            if (coffeeShop.searchTerm.length >= 1) {
+
+                return cofeeShopdata.filter(c => c.coffeeShopName.toLowerCase().includes(coffeeShop.searchTerm.toLowerCase()))
+            } else {
+                return cofeeShopdata;
+            }
 
 
         } catch (e) {
@@ -61,11 +71,18 @@ export const coffeeShopSlice = createSlice({
     name: "coffeeShop",
     initialState: coffeeAdapter.getInitialState({
         loading: false,
-        tags: [],
-        searchTerm: [],
+        coffeeShopLoaded: false,
+        searchTerm: "",
+
 
     }),
-    reducers: {},
+    reducers: {
+        setSearchTerm: (state, action) => {
+            state.coffeeShopLoaded = false;
+            state.searchTerm = action.payload;
+        }
+
+    },
     extraReducers: (builder) => {
         builder.addCase(getCoffeeShopDataAsync.pending, (state) => {
             state.loading = true;
@@ -73,8 +90,8 @@ export const coffeeShopSlice = createSlice({
         });
         builder.addCase(getCoffeeShopDataAsync.fulfilled, (state, {payload}) => {
             state.loading = false;
-            coffeeAdapter.addMany(state, payload);
-            state.error = null;
+            coffeeAdapter.setAll(state, payload);
+            state.coffeeShopLoaded = true;
         });
         builder.addCase(getCoffeeShopDataAsync.rejected, (state, {payload}) => {
             state.loading = false;
@@ -115,9 +132,9 @@ export const coffeeShopSlice = createSlice({
             state.loading = false;
         })
 
-        builder.addCase(deleteCoffeeShopAsync.fulfilled, (state, {payload}) => {
+        builder.addCase(deleteCoffeeShopAsync.fulfilled, (state, {payload: id}) => {
             state.loading = false
-            coffeeAdapter.removeOne(state, payload);
+            coffeeAdapter.removeOne(state, id);
             state.error = null;
         })
         builder.addCase(deleteCoffeeShopAsync.rejected, (state, {payload}) => {
@@ -131,7 +148,7 @@ export const coffeeShopSlice = createSlice({
 })
 
 export const coffeeSelector = coffeeAdapter.getSelectors(state => state.coffeeShop);
-
+export const {setSearchTerm} = coffeeShopSlice.actions
 export const coffeeShopReducer = coffeeShopSlice.reducer;
 
 

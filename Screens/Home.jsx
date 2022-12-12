@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {coffeeSelector, getCoffeeShopDataAsync, setSearchTerm,} from "../Redux/CoffeShopSliceReducer";
 import {collection, onSnapshot} from "firebase/firestore";
 import {db} from "../Firebase/firebaseConfig";
-import {Ionicons} from "@expo/vector-icons";
+import {Ionicons, Feather} from "@expo/vector-icons";
 import {AirbnbRating} from "react-native-ratings";
 
 const Home = ({navigation}) => {
@@ -30,8 +30,8 @@ const Home = ({navigation}) => {
                 mr="5"
                 onPress={() => navigation.navigate("About Us")}
             >
-                <HStack>
-                    <Text color="primary.50" mr="1">
+                <HStack mr="5">
+                    <Text color="primary.50" mr="3">
                         About Us
                     </Text>
                     <Icon
@@ -47,26 +47,31 @@ const Home = ({navigation}) => {
                 alt="Logo"
                 maxW="400px"
                 maxH="400px"
+                mt="5"
                 alignSelf="center"
             />
-            <Box my="3">
-            </Box>
-            <Box alignItems="center">
-                <Input value={searchTerm}
-                       onChangeText={text => dispatch(setSearchTerm(text))}
-                       placeholder="Value Controlled Input"/>
-            </Box>
             <Pressable onPress={() => navigation.navigate("Add Coffee Shop")}>
-                <HStack>
+                <HStack mt="5" ml="5">
                     <Icon
                         as={Ionicons}
                         name="add-circle-outline"
                         size="6"
                         color="black"
                     />
-                    <Text color="primary.50">Add New</Text>
+                    <Text ml="3" color="primary.50">Add New</Text>
                 </HStack>
             </Pressable>
+            <Box mt="5" mr="10" ml="5">
+            <Input 
+            InputLeftElement={<Icon as={<Feather name="search" />} size={5} ml="2" color="primary.50" />}
+            bg="white"
+            variant="rounded"
+            marginRight="10"
+            w="100%"
+            value={searchTerm}
+                       onChangeText={text => dispatch(setSearchTerm(text))}
+                       placeholder="Search Shops"/>
+            </Box>
             <FlatList
                 data={allCoffeeShopData}
                 keyExtractor={(item) => item.id}

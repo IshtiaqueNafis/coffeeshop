@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {Box, Button, Heading, HStack, Icon, Image, Pressable, ScrollView, Text, VStack} from "native-base";
-import {AntDesign, Feather, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
+import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, FontAwesome} from "@expo/vector-icons";
 import {addRatingCoffeeShop, db} from "../Firebase/firebaseConfig";
 import {coffeeSelector, deleteCoffeeShopAsync, getSingleCoffeeShopDataAsync} from "../Redux/CoffeShopSliceReducer";
 import {useDispatch, useSelector} from "react-redux";
@@ -58,6 +58,9 @@ const CoffeeShopDetails = ({route, navigation}) => {
         await Linking.openURL(emailUrl);
     };
 
+    const onCallPress = (phone) => {
+        Linking.openURL(`tel:${phone}`)
+    }
     useEffect(() => {
         onSnapshot(collection(db, "coffeeShop"), () => {
             dispatch(getSingleCoffeeShopDataAsync({id}));
@@ -74,7 +77,7 @@ const CoffeeShopDetails = ({route, navigation}) => {
                     alt="Alternate Text"
                 />
             </Box>
-            <Box borderTopRadius="15" bg="white" paddingBottom="300px">
+            <Box borderTopRadius="15" bg="white" paddingBottom="30px">
                 <Box mt="5" alignItems="center">
                     <Heading maxW="200" maxH="200" fontWeight="medium">
                         {coffeeShop?.coffeeShopName}
@@ -128,7 +131,7 @@ const CoffeeShopDetails = ({route, navigation}) => {
                         </HStack>
                     </Box>
                 </HStack>
-                <HStack>
+                <HStack marginTop="3">
                     <VStack mt="3" ml="8">
                         <HStack>
                             <Icon
@@ -137,16 +140,16 @@ const CoffeeShopDetails = ({route, navigation}) => {
                                 size="30px"
                                 color="primary.50"
                             />
-                            <Box w="200" maxW="145" maxH="300">
-                                <Text fontSize="md" ml="3">
+                            <Box maxW="120" maxH="300" mx="3">
+                                <Text fontSize="md" >
                                     {coffeeShop?.address?.fullAddress}
                                 </Text>
                             </Box>
                         </HStack>
-                        <HStack mt="1">
-                            <Pressable
+                        <HStack mt="5">
+                            <Pressable 
                                 onPress={() => {
-                                    navigation.navigate("Home");
+                                    onCallPress(coffeeShop?.phoneNumber)
                                 }}
                             >
                                 <Icon
@@ -156,7 +159,7 @@ const CoffeeShopDetails = ({route, navigation}) => {
                                     color="primary.50"
                                 />
                             </Pressable>
-                            <Box w="200" maxW="145" maxH="30">
+                            <Box w="200" maxH="30">
                                 <Text fontSize="md" ml="3">
                                     +1 {coffeeShop?.phoneNumber}
                                 </Text>
@@ -184,9 +187,9 @@ const CoffeeShopDetails = ({route, navigation}) => {
                         </HStack>
                     </Box>
                 </Box>
-                <HStack mx="8" mt="3">
+                <Box alignItems="center">
+                <HStack mx="8" mt="3" >
                     <Pressable
-                        ml="3"
                         onPress={() => {
                             const value = coffeeShop?.address?.fullAddress.split(",")[0]
                             const replaced = value.split(" ").join('+');
@@ -196,14 +199,14 @@ const CoffeeShopDetails = ({route, navigation}) => {
                         }}
                     >
                         <Icon
-                            as={AntDesign}
+                            as={FontAwesome}
                             name="facebook-square"
                             size="50px"
                             color="primary.300"
                         />
                     </Pressable>
                     <Pressable
-                        ml="3"
+                        ml="5"
                         onPress={() => {
                             const text = `CoffeeShop name is ${coffeeShop?.coffeeShopName}
                             it is located at ${coffeeShop?.address?.fullAddress} phone number is ${coffeeShop?.phoneNumber}
@@ -213,26 +216,27 @@ const CoffeeShopDetails = ({route, navigation}) => {
                         }}
                     >
                         <Icon
-                            as={AntDesign}
-                            name="twitter"
+                            as={FontAwesome}
+                            name="twitter-square"
                             size="50px"
                             color="primary.500"
                         />
                     </Pressable>
                     <Pressable
-                        ml="3"
+                        ml="5"
                         onPress={async () => {
                             await onEmailPress(coffeeShop);
                         }}
                     >
                         <Icon
-                            as={AntDesign}
-                            name="sharealt"
+                            as={FontAwesome}
+                            name="share-alt-square"
                             size="50px"
                             color="primary.600"
                         />
                     </Pressable>
                 </HStack>
+                </Box>
             </Box>
         </ScrollView>
     );

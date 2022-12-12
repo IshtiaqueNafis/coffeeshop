@@ -81,44 +81,48 @@ const Home = ({ navigation }) => {
       <FlatList
         data={allCoffeeShopData}
         keyExtractor={(item) => item.id}
+        renderItem={({ item }) => {
+          if(item.coffeeShopName != undefined){
+            return ( 
+              <Box bg="white" m="5" w="85%" borderRadius="30">
+                <Pressable
+                  onPress={() => navigation.navigate("Details", { id: item.id })}
+                  bg="white"
+                  borderRadius="30"
+                >
+                  <HStack>
+                    <Image
+                      my="3"
+                      ml="3"
+                      source={require("../assets/shop_logo.png")}
+                      alt="Alternate Text"
+                      maxW="120px"
+                      maxH="120px"
+                      h="120px"
+                      w="120px"
+                      borderRadius="10"
+                    />
+                    <VStack alignSelf="center">
+                      <Text fontSize="2xl" maxW="150" ml="3" color="primary.50">
+                        {item.coffeeShopName}
+                      </Text>
+                      <AirbnbRating
+                        defaultRating={item.coffeeRating}
+                        isDisabled={true}
+                        showRating={false}
+                        ratingCount={5}
+                        size={25}
+                        selectedColor="#ec9c60"
+                        starContainerStyle={{ marginLeft: 10, marginTop: 10, marginBottom: 20}}
+                      />
+                    </VStack>
+                  </HStack>
+                </Pressable>
+              </Box>
+            )
+          }
+        }}
         extraData={refresh}
-        renderItem={({ item }) => (
-          <Box bg="white" m="5" w="85%" borderRadius="30">
-            <Pressable
-              onPress={() => navigation.navigate("Details", { id: item.id })}
-              bg="white"
-              borderRadius="30"
-            >
-              <HStack>
-                <Image
-                  my="3"
-                  ml="3"
-                  source={require("../assets/shop_logo.png")}
-                  alt="Alternate Text"
-                  maxW="120px"
-                  maxH="120px"
-                  h="120px"
-                  w="120px"
-                  borderRadius="10"
-                />
-                <VStack alignSelf="center">
-                  <Text fontSize="2xl" maxW="150" ml="3" color="primary.50">
-                    {item.coffeeShopName}
-                  </Text>
-                  <AirbnbRating
-                    defaultRating={item.coffeeRating}
-                    isDisabled={true}
-                    showRating={false}
-                    ratingCount={5}
-                    size={25}
-                    selectedColor="#ec9c60"
-                    starContainerStyle={{ marginLeft: 10, marginTop: 10 }}
-                  />
-                </VStack>
-              </HStack>
-            </Pressable>
-          </Box>
-        )}
       />
     </Box>
   );

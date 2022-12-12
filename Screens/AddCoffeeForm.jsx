@@ -1,3 +1,8 @@
+/* 
+Design: Farshad Jalali Ameri - 101303158
+Logic :  Nafis Ishtiaque - 101206872 / Roberto Borges - 101255891 / Sarah Sami - 101334588
+*/
+
 import React, {useState} from "react";
 import {Box, Button, Heading, ScrollView, View, VStack,} from "native-base";
 import {Formik} from "formik";

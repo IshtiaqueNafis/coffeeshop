@@ -1,3 +1,8 @@
+/* 
+Design: Israr Wahid - 101348701 
+Logic :  Nafis Ishtiaque - 101206872 
+*/
+
 import {createDrawerNavigator} from "@react-navigation/drawer";
 import About from "../Screens/About";
 import HomeStack from "./HomeStack";

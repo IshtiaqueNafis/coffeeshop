@@ -1,3 +1,7 @@
+/* 
+Logic :  Israr Wahid - 101348701 / Roberto Borges - 101255891
+*/
+
 import React, {useState} from 'react';
 import {View} from "native-base";
 import MapView, {Marker} from "react-native-maps";

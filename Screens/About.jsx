@@ -1,3 +1,7 @@
+/* 
+Design: Farshad Jalali Ameri - 101303158
+*/
+
 import React, { useState } from "react";
 import { data } from "../api/aboutUserdata";
 import {

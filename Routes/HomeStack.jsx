@@ -1,3 +1,8 @@
+/* 
+Design: Israr Wahid - 101348701
+Logic :  Nafis Ishtiaque - 101206872 
+*/
+
 import {createStackNavigator} from "@react-navigation/stack";
 import Home from "../Screens/Home";
 import Details from "../Screens/Details";

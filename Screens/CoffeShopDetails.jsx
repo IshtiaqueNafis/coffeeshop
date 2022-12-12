@@ -1,3 +1,9 @@
+/* 
+Design: Farshad Jalali Ameri - 101303158
+Logic :  Roberto Borges - 101255891/ Israr Wahid - 101348701
+Testing: Sarah Sami - 101334588
+*/
+
 import React, {useCallback, useEffect} from 'react';
 import {Box, Button, Heading, HStack, Icon, Image, Pressable, ScrollView, Text, VStack} from "native-base";
 import {FontAwesome, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";

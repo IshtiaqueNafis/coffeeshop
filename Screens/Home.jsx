@@ -1,3 +1,9 @@
+/* Design: Farshad Jalali Ameri - 101303158 
+   Logic :  Nafis Ishtiaque - 101206872 / Sarah Sami - 101334588
+   Testing: Israr Wahid - 101348701
+*/
+
+
 import React, {useEffect} from "react";
 import {Box, FlatList, HStack, Icon, Image, Input, Pressable, Text, VStack,} from "native-base";
 import {useDispatch, useSelector} from "react-redux";
@@ -6,6 +12,7 @@ import {collection, onSnapshot} from "firebase/firestore";
 import {db} from "../Firebase/firebaseConfig";
 import {Ionicons, Feather} from "@expo/vector-icons";
 import {AirbnbRating} from "react-native-ratings";
+
 
 const Home = ({navigation}) => {
     const allCoffeeShopData = useSelector(coffeeSelector.selectAll);

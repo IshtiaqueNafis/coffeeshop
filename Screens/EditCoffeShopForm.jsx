@@ -1,3 +1,8 @@
+/* 
+Design: Farshad Jalali Ameri - 101303158
+Logic :  Nafis Ishtiaque - 101206872 / Roberto Borges - 101255891/ Sarah Sami - 101334588   
+*/
+
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {coffeeSelector, getSingleCoffeeShopDataAsync} from "../Redux/CoffeShopSliceReducer";
@@ -13,6 +18,7 @@ import {coffeShopTags} from "../api/coffeShopTags";
 import {db, updateCoffeeShop} from "../Firebase/firebaseConfig";
 import {collection, onSnapshot} from "firebase/firestore";
 import Loading from "./Loading";
+
 
 const EditCoffeeShopForm = ({route, navigation}) => {
 

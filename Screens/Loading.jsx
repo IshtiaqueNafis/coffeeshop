@@ -1,5 +1,8 @@
+/* Design: Roberto Borges - 101255891 */
+
 import React from 'react';
 import {HStack, Spinner} from "native-base";
+
 
 const Loading = () => {
 

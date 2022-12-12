@@ -1,3 +1,8 @@
+/* 
+Design: Sarah Sami - 101334588 
+Logic :  Nafis Ishtiaque - 101206872 
+*/
+
 import React, {useState} from 'react';
 import {data} from "../api/aboutUserdata";
 import {Avatar, Box, HStack, Icon, Pressable, Text, View, VStack} from "native-base";

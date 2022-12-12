@@ -1,3 +1,7 @@
+/* 
+Logic :  Nafis Ishtiaque - 101206872/ Sarah Sami - 101334588/ Israr Wahid - 101348701
+*/
+
 import {initializeApp} from 'firebase/app';
 import {
     addDoc,

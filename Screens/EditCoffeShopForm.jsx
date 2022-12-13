@@ -9,7 +9,7 @@ import {coffeeSelector, getSingleCoffeeShopDataAsync} from "../Redux/CoffeShopSl
 import * as Yup from "yup";
 import {Formik} from "formik";
 import {Alert} from "react-native";
-import {Box, Button, Heading, ScrollView, View, VStack} from "native-base";
+import {Box, Button, Heading, ScrollView, View, VStack, HStack, Text, Input} from "native-base";
 import MyTextInput from "../Components/MyTextInput";
 import MyPlaceInput from "../Components/MyPlaceInput";
 import MyTextArea from "../Components/MyTextArea";
@@ -25,24 +25,28 @@ const EditCoffeeShopForm = ({route, navigation}) => {
 
     const {id} = route.params;
     const selectedCoffeeShop = useSelector(state => coffeeSelector.selectById(state, id));
-    const {loading} = useSelector(state => state.coffeeShop);
+    const {loading,tags} = useSelector(state => state.coffeeShop);
+    const [previousAddress, setPreviousAddress] = useState("");
     const [selected, setSelected] = useState([]);
+   
     const dispatch = useDispatch();
     useEffect(() => {
         onSnapshot(collection(db, "coffeeShop"), () => {
             dispatch(getSingleCoffeeShopDataAsync({id}));
+            setPreviousAddress(selectedCoffeeShop?.address);
         })
     }, [id, dispatch])
 
+   
 
     const initialValues = selectedCoffeeShop;
 
     const validationSchema = Yup.object({
         coffeeShopName: Yup.string().required("name is a required field"),
         address: Yup.object({
-            fullAddress: Yup.string().required(),
-            lat: Yup.number().required(),
-            lng: Yup.number().required(),
+            fullAddress: Yup.string(),
+            lat: Yup.number(),
+            lng: Yup.number()
         }),
         phoneNumber: Yup.number().required("phone is a required field"),
         description: Yup.string().required("description is required"),
@@ -57,10 +61,13 @@ const EditCoffeeShopForm = ({route, navigation}) => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={async (values, {resetForm}) => {
-
+                
                 try {
+                    console.log(values.address);
                     values.tags = [...selected];
+                    
                     if (selected.length > 0) {
+                        
                         await updateCoffeeShop(values, id);
                         resetForm();
                         setSelected([]);
@@ -124,6 +131,8 @@ const EditCoffeeShopForm = ({route, navigation}) => {
                                     onBlur={handleBlur("address")}
                                     value={values.address}
                                 />
+                                <Text color="white" mb="1" pl="5">Previously Selected Address: </Text>
+                                <Input value={previousAddress.fullAddress} isDisabled borderRadius="15" bg="primary.200" mx="4" borderColor= "primary.200"/>
 
                                 <MyTextInput
                                     label={"Phone"}
@@ -181,6 +190,18 @@ const EditCoffeeShopForm = ({route, navigation}) => {
                                             fontWeight: "Thin",
                                         }}
                                     />
+                                    <Box mt="3">
+                                    <HStack flexWrap="wrap">
+                                    <Text color="white" mb="3">Previously Selected Tags:</Text>
+                                    {selectedCoffeeShop?.tags?.map(tag => (
+                                    <Button key={tag} bg="primary.50" w="100" h="10" m="1" /*Place tags here*/>
+                                        {tag}
+                                        </Button>
+                                    ))}
+
+
+                                    </HStack>
+                                </Box>
                                 </View>
 
                                 <Box alignItems="center" mt="5">
